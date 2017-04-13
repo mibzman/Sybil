@@ -28,6 +28,9 @@ deactivate
 ## Deploy Server:
 `flask run`
 
+### View server at:
+localhost:5000
+
 ## Linux Install:
 ```
 sudo pip install virtualenv
