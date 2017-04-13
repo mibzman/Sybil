@@ -5,13 +5,30 @@ Sybil takes the information you give it, and gives the information back later wh
 
 ## Example:
 
-//todo
+//todo s
 
 
 ## Window Install:
 ```
+#cli as admin
 pip install --upgrade pip setuptools
 pip install virtualenv
 pip install virtualenvwrapper-win
+mkvirtualenv Sybil
+setprojectdir .
+pip install flask
+setx FLASK_APP sybil.py 
+deactivate
+# close and re-open cli
+```
 
+## To work on the server:
+`workon Sybil`
+
+## Deploy Server:
+`flask run`
+
+## Linux Install:
+```
+sudo pip install virtualenv
 ```
