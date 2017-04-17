@@ -1,1 +1,1 @@
-web: gunicorn echoserver:app
+web: gunicorn sybil:app
