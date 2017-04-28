@@ -35,3 +35,12 @@ localhost:5000
 ```
 sudo pip install virtualenv
 ```
+
+### Heroku:
+Install Heroku CLI Toolbelt
+```
+heroku create
+heroku local
+git push heroku master
+heroku open
+```
