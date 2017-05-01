@@ -30,7 +30,7 @@ def get_answer(question):
 					continue #do nothing
 				elif q[0] == t[0]: #checks if the words are the same or synonyms
 					++count
-		if count > 3:
+		if count >= 3:
 			answer = line
 			break
 		++iterator
