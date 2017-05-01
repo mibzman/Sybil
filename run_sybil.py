@@ -13,13 +13,14 @@ memory = open("Sybil_memory.txt", "r+")
 def get_answer(question):
 	tok_q = nltk.word_tokenize(question)
 	tag_q = nltk.pos_tag(tok_q)
-	line = readline(memory)
-	tok_line = nltk.word_tokenize(file_line)
+	line = memory.readline()
+	tok_line = nltk.word_tokenize(line)
 	tag_line = nltk.pos_tag(tok_line)
 	answer  = "I'm sorry, I do not know the answer to that." #default
 	while line:
+		iterator = 0
 		count = 0
-		tok_line = nltk.word_tokenize(file_line)
+		tok_line = nltk.word_tokenize(line)
 		tag_line = nltk.pos_tag(tok_line)
 		for t in tag_line:
 			for q in tag_q:
@@ -32,8 +33,9 @@ def get_answer(question):
 		if count > 3:
 			answer = line
 			break
-		line = readline(memory)
-	output(answer) #testing purposes
+		++iterator
+		line = memory.readline(iterator)
+	print(answer) #output(answer) #testing purposes
 
 #question or data?
 def determine_input(data):
@@ -47,11 +49,11 @@ def determine_input(data):
 #example: if the data was "I met with my teacher" the output would be "met teacher"
 def output(answer):
 	tok_answer = nltk.word_tokenize(answer)
-	tag_answer = nltk.pos_tag(tok_line)
+	tag_answer = nltk.pos_tag(tok_answer)
 	noun = " "
 	verb = " "
 	for t in tag_answer:
-		prev_word = t - 1
+		# prev_word = t - 1
 		if t[1] == "NN":
 			if t[0] not in pronouns:
 				noun = t[0]
@@ -65,7 +67,7 @@ user_in = 0
 while user_in != 1:
 	data = raw_input("Tell me something!")
 	determine_input(data)
-	user_in = raw_input("Enter 1 to quit or anything else to continue.")
+	# user_in = raw_input("Enter 1 to quit or anything else to continue.")
 
 
 
