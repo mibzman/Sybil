@@ -1,12 +1,12 @@
 import nltk
-nltk.download('brown')
+#nltk.download('brown')
 nltk.download('punkt')
-from nltk.corpus import brown
+#from nltk.corpus import brown
 
 common_words = ["the", "a", "an", "is", "are", "were", "."]
 question_words = ["who", "what", "when", "where", "why", "?"]
 pronouns = ["I", "me", "my", "he", "his", "her", "hers", "it", "its", "their", "theirs"]
-text = nltk.Text(word.lower() for word in brown.words())
+#text = nltk.Text(word.lower() for word in brown.words())
 memory = open("Sybil_memory.txt", "r+")
 
 #find the answer to a question through the data
@@ -27,7 +27,7 @@ def get_answer(question):
 					continue #do nothing
 				elif q[0] in common_words or t[0] in common_words:
 					continue #do nothing
-				elif q[0] == t[0] or q[0] in text.similar(t[0]): #checks if the words are the same or synonyms
+				elif q[0] == t[0]: #checks if the words are the same or synonyms
 					++count
 		if count > 3:
 			answer = line
@@ -39,7 +39,7 @@ def get_answer(question):
 def determine_input(data):
 	new_data = nltk.word_tokenize(data)
 	if new_data[0] in question_words:
-		get_answer(data, memory)
+		get_answer(data)
 	else:
 		memory.write(data)	
 
