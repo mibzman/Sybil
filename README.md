@@ -49,6 +49,7 @@ sudo apt-get install heroku
 ```
 heroku create
 heroku local
+heroku keys:add
 git push heroku master
 heroku open
 ```
