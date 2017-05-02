@@ -98,11 +98,11 @@ def output(answer):
 	print(verb + " " + noun)
 
 #testing purposes
-print("Hello, carbon based lifeform. I am Sybil, your personal Librarian. Please add data to my library, then I can recall what you've told me.")
-user_in = 0
-while user_in != 1:
-	data = raw_input("Tell me something!")
-	print(analyze(data))
+# print("Hello, carbon based lifeform. I am Sybil, your personal Librarian. Please add data to my library, then I can recall what you've told me.")
+# user_in = 0
+# while user_in != 1:
+# 	data = raw_input("Tell me something!")
+# 	print(analyze(data))
 	# user_in = raw_input("Enter 1 to quit or anything else to continue.")
 
 #test
