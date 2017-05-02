@@ -1,4 +1,6 @@
+from __future__ import print_function #
 import nltk
+import string
 #nltk.download('brown')
 nltk.download('punkt')
 #from nltk.corpus import brown
@@ -11,36 +13,69 @@ memory = open("Sybil_memory.txt", "r+")
 
 #find the answer to a question through the data
 def get_answer(question):
-	tok_q = nltk.word_tokenize(question)
-	tag_q = nltk.pos_tag(tok_q)
-	line = memory.readline()
-	tok_line = nltk.word_tokenize(line)
-	tag_line = nltk.pos_tag(tok_line)
+	question = question.translate(None, string.punctuation)
+	questionArr = question.split()
+	# line = memory.readline()
+
+	# answerLineArr = line.split()
+	# what do i really hope works like its supposed to?
 	answer  = "I'm sorry, I do not know the answer to that." #default
-	while line:
-		iterator = 0
-		count = 0
-		tok_line = nltk.word_tokenize(line)
-		tag_line = nltk.pos_tag(tok_line)
-		for t in tag_line:
-			for q in tag_q:
-				if q[0] in question_words:
-					continue #do nothing
-				elif q[0] in common_words or t[0] in common_words:
-					continue #do nothing
-				elif q[0] == t[0]: #checks if the words are the same or synonyms
-					++count
-		if count >= 3:
-			answer = line
-			break
-		++iterator
-		line = memory.readline(iterator)
+
+	with open("Sybil_memory.txt", "r+") as memory:
+		for line in memory:
+			answerLineArr = line.split()
+			count = 0
+			for t in answerLineArr:
+				for q in questionArr:
+					if q.lower() in question_words:
+						continue #do nothing
+					elif q.lower() in common_words or t in common_words:
+						continue #do nothing
+					elif q.lower() == t.lower(): #checks if the words are the same or synonyms
+						count += 1
+					# print(count, q, t)
+			if count >= 3:
+				print(line)
+				return
+				# answer = line
+				# break
+		# print("line:", line)
+
 	print(answer) #output(answer) #testing purposes
+
+#find the answer to a question through the data
+def are_synonyms(first, second):
+	# tok_q = nltk.word_tokenize(question)
+	# tag_q = nltk.pos_tag(tok_q)
+	# line = memory.readline()
+	# tok_line = nltk.word_tokenize(line)
+	# tag_line = nltk.pos_tag(tok_line)
+	# answer  = "I'm sorry, I do not know the answer to that." #default
+	# while line:
+	# 	iterator = 0
+	# 	count = 0
+	# 	tok_line = nltk.word_tokenize(line)
+	# 	tag_line = nltk.pos_tag(tok_line)
+	# 	for t in tag_line:
+	# 		for q in tag_q:
+	# 			if q[0] in question_words:
+	# 				continue #do nothing
+	# 			elif q[0] in common_words or t[0] in common_words:
+	# 				continue #do nothing
+	# 			elif q[0] == t[0]: #checks if the words are the same or synonyms
+	# 				++count
+	# 	if count >= 3:
+	# 		answer = line
+	# 		break
+	# 	++iterator
+	# 	line = memory.readline(iterator)
+	# print(answer) #output(answer) #testing purposes
+	return false
 
 #question or data?
 def determine_input(data):
 	new_data = nltk.word_tokenize(data)
-	if new_data[0] in question_words:
+	if "?" in new_data or new_data[0] in question_words:
 		get_answer(data)
 	else:
 		memory.write(data)	
