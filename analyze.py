@@ -35,13 +35,13 @@ def get_answer(question):
 						count += 1
 					# print(count, q, t)
 			if count >= 3:
-				print(line)
-				return
+				# print(line)
+				return line
 				# answer = line
 				# break
 		# print("line:", line)
 
-	print(answer) #output(answer) #testing purposes
+	return answer #output(answer) #testing purposes
 
 #find the answer to a question through the data
 def are_synonyms(first, second):
@@ -76,9 +76,10 @@ def are_synonyms(first, second):
 def determine_input(data):
 	new_data = nltk.word_tokenize(data)
 	if "?" in new_data or new_data[0] in question_words:
-		get_answer(data)
+		return get_answer(data)
 	else:
 		memory.write(data)	
+		return "Thanks, I'll remember that!"
 
 #gives the answer in a reasonable format
 #example: if the data was "I met with my teacher" the output would be "met teacher"
@@ -101,7 +102,7 @@ print("Hello, carbon based lifeform. I am Sybil, your personal Librarian. Please
 user_in = 0
 while user_in != 1:
 	data = raw_input("Tell me something!")
-	determine_input(data)
+	print(determine_input(data))
 	# user_in = raw_input("Enter 1 to quit or anything else to continue.")
 
 
