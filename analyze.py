@@ -1,9 +1,9 @@
 from __future__ import print_function #
 import nltk
 import string
-#nltk.download('brown')
+nltk.download('wordnet')
 nltk.download('punkt')
-#from nltk.corpus import brown
+from nltk.corpus import wordnet as wn
 
 common_words = ["the", "a", "an", "is", "are", "were", "."]
 question_words = ["who", "what", "when", "where", "why", "?"]
@@ -31,7 +31,7 @@ def get_answer(question):
 						continue #do nothing
 					elif q.lower() in common_words or t in common_words:
 						continue #do nothing
-					elif q.lower() == t.lower(): #checks if the words are the same or synonyms
+					elif q.lower() == t.lower() or are_synonyms(q, t): #checks if the words are the same or synonyms
 						count += 1
 					# print(count, q, t)
 			if count >= 3:
@@ -45,32 +45,16 @@ def get_answer(question):
 
 #find the answer to a question through the data
 def are_synonyms(first, second):
-	# tok_q = nltk.word_tokenize(question)
-	# tag_q = nltk.pos_tag(tok_q)
-	# line = memory.readline()
-	# tok_line = nltk.word_tokenize(line)
-	# tag_line = nltk.pos_tag(tok_line)
-	# answer  = "I'm sorry, I do not know the answer to that." #default
-	# while line:
-	# 	iterator = 0
-	# 	count = 0
-	# 	tok_line = nltk.word_tokenize(line)
-	# 	tag_line = nltk.pos_tag(tok_line)
-	# 	for t in tag_line:
-	# 		for q in tag_q:
-	# 			if q[0] in question_words:
-	# 				continue #do nothing
-	# 			elif q[0] in common_words or t[0] in common_words:
-	# 				continue #do nothing
-	# 			elif q[0] == t[0]: #checks if the words are the same or synonyms
-	# 				++count
-	# 	if count >= 3:
-	# 		answer = line
-	# 		break
-	# 	++iterator
-	# 	line = memory.readline(iterator)
-	# print(answer) #output(answer) #testing purposes
-	return false
+	# print(first)
+	# print(second)
+	# print(wn.synsets(second).lemma_names)
+
+	for index, meaning in enumerate(wn.synsets(first)):
+	  for word in meaning.lemma_names():
+	  	if word == second:
+	  		return True
+
+	return False
 
 #question or data?
 def analyze(data):
@@ -103,6 +87,5 @@ def output(answer):
 # while user_in != 1:
 # 	data = raw_input("Tell me something!")
 # 	print(analyze(data))
-	# user_in = raw_input("Enter 1 to quit or anything else to continue.")
 
 #test
