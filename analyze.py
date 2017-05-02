@@ -105,7 +105,4 @@ while user_in != 1:
 	print(analyze(data))
 	# user_in = raw_input("Enter 1 to quit or anything else to continue.")
 
-
-
-
-
+#test
