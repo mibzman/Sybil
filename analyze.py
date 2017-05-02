@@ -90,5 +90,3 @@ user_in = 0
 while user_in != 1:
 	data = raw_input("Tell me something!")
 	print(analyze(data))
-
-#test
