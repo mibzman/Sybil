@@ -19,21 +19,21 @@ setprojectdir .
 pip install flask
 setx FLASK_APP sybil.py 
 deactivate
-# close and re-open cli
 ```
+close and re-open cli
 
 ## To work on the server:
 `workon Sybil`
 
-## Deploy Server:
+## Run Server:
 `flask run`
 
 ### View server at:
 localhost:5000
 
-### Heroku:
+## Heroku:
 
-#### Install Heroku CLI Toolbelt:
+### Install Heroku CLI Toolbelt:
 ```
 sudo add-apt-repository "deb https://cli-assets.heroku.com/branches/stable/apt ./"
 curl -L https://cli-assets.heroku.com/apt/release.key | sudo apt-key add -
@@ -41,7 +41,7 @@ sudo apt-get update
 sudo apt-get install heroku
 ```
 
-#### Deploy:
+### Deploy:
 Uncomment
 
 ```
