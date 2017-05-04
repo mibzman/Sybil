@@ -3,12 +3,12 @@ A Natural Language Librarian
 
 Sybil takes the information you give it, and gives the information back later when you ask for it.
 
-## Example:
+## Running Locally:
+`python analyze.py`
 
-//todo
+(make sure that `Testing()` is uncommented)
 
-
-## Window Install:
+## Windows Dev Install:
 ```
 #cli as admin
 pip install --upgrade pip setuptools
@@ -31,12 +31,8 @@ deactivate
 ### View server at:
 localhost:5000
 
-## Linux Install:
-```
-sudo pip install virtualenv
-```
-
 ### Heroku:
+
 #### Install Heroku CLI Toolbelt:
 ```
 sudo add-apt-repository "deb https://cli-assets.heroku.com/branches/stable/apt ./"
@@ -46,6 +42,8 @@ sudo apt-get install heroku
 ```
 
 #### Deploy:
+Uncomment
+
 ```
 heroku create
 heroku local
