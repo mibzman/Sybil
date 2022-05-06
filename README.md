@@ -1,7 +1,9 @@
+> The [sibyls](https://en.wikipedia.org/wiki/Sibyl) were prophetesses or oracles in Ancient Greece.
 # Sybil
-A Natural Language Librarian
-
+Is A Natural Language Librarian.
 Sybil takes the information you give it, and gives the information back later when you ask for it.
+
+This was my first python project for my AI Class. It includes some rudimentary sentiment analysis, and, astoundingly, a facebook messenger integreation.  I'm not sure how I got this working within 2 weeks. Like all old projects, the code is pretty bad. I know I can do better now.
 
 ## Running Locally:
 `python analyze.py`
